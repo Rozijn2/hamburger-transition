@@ -3,12 +3,17 @@
     --menu-bar-height: 10px;
 }
 
+#container {
+    width: 60px;
+    padding: 20px 0;
+}
+
 #menu {
     background-color: #D84282;
     position: relative;
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
-    margin: 100px;
+    transition: background-color 1s;
 }
 
 #menu::before,
@@ -19,15 +24,34 @@
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
     position: absolute;
+    transition: transform 1s;
 }
 
 #menu::before {
     left: 0;
     top: -20px;
+    transform-origin: left top;
 }
 
 #menu::after {
     left: 0;
     top: 20px;
+    transform-origin: left bottom;
 }
+
+#container:hover #menu {
+    background-color: transparent;
+}
+
+#container:hover #menu::before {
+    transform: rotate(45deg);
+    transform-origin: left top;
+}
+
+#container:hover #menu::after {
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+}
+
+
 
